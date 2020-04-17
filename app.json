@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Pet Hood",
+    "slug": "pethood",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.brenoma.pethoodapp",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.brenoma.pethoodapp",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB1KiOoVHfloTngeDkatDOkJWcLqdX2tVY"
+        }
+      }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "Pet Hood",
+  "name": "pethoodapp"
+}
