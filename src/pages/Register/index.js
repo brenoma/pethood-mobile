@@ -19,7 +19,7 @@ export default function Logon() {
         navigation.navigate('Home');
     }
 
-    const [offset] = useState(new Animated.ValueXY({ x: 0, y: 150 }));
+    const [offset] = useState(new Animated.ValueXY({ x: 0, y: 110 }));
     const [opacity] = useState(new Animated.Value(0));
     const [opacityHeader] = useState(new Animated.Value(0));
 
@@ -32,13 +32,13 @@ export default function Logon() {
             }),
             Animated.timing(opacity, {
                 toValue: 1,
-                duration: 400,
+                duration: 1500,
             })
         ]).start();
-        Animated.timing(opacityHeader, {
-            toValue: 1,
-            duration: 6000,
-        }).start();
+        // Animated.timing(opacityHeader, {
+        //     toValue: 1,
+        //     duration: 6000,
+        // }).start();
     }, []);
 
     return (

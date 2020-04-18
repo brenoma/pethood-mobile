@@ -13,7 +13,7 @@ export default function Incidents() {
     const navigation = useNavigation();
 
     function navigateToDetail() {
-        // navigation.navigate('Home', { screen: 'Detail'});
+        navigation.navigate('Home', { screen: 'Detail'});
     }
 
     // async function loadIncidents() {
@@ -38,7 +38,7 @@ export default function Incidents() {
 
             <FlatList
                 style={styles.incidentList}
-                data={[1]}
+                data={[1, 2, 3, 4, 5, 6, 7]}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={incident => String(incident.id)}
                 renderItem={() => (
@@ -54,7 +54,7 @@ export default function Incidents() {
 
                         <TouchableOpacity
                             style={styles.detailsButton}
-                            onPress={(navigateToDetail)}
+                            onPress={navigateToDetail}
                         >
                             <Text style={styles.detailsButtonText}>Ajudar no caso!</Text>
                             <Feather name='arrow-right' size={20} color={'#0CC7BF'}></Feather>

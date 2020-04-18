@@ -19,9 +19,9 @@ export default StyleSheet.create({
     },
 
     title: {
-        fontSize: 35,
-        color: '#0CC7BF',
-        fontWeight: 'bold',
+        fontSize: 40,
+        color: '#FFF',
+        // fontWeight: 'bold',
     },
 
     logon: {
