@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Feather } from '@expo/vector-icons';
-import { View, FlatList, Text, Image, TouchableOpacity } from 'react-native';
+import { View, FlatList, Text, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 
@@ -9,22 +9,23 @@ import styles from './styles';
 import logoImg from '../../assets/logo.png'
 
 export default function Incidents() {
-    // const [incidents, setIncidents] = useState([]);
+    const [incident, setIncident] = useState([]);
     const navigation = useNavigation();
 
     function navigateToDetail() {
-        navigation.navigate('Home', { screen: 'Detail'});
+        navigation.navigate('Home', { screen: 'Detail' });
     }
 
-    // async function loadIncidents() {
-    //     const response = await api.get('');
+    async function loadIncidents() {
+        const response = await api.get('incident');
 
-    //     setIncidents(response.data);
-    // }
+        setIncident(response.data);
+    }
 
-    // useEffect(() => {
-    //     loadIncidents();
-    // }, []);
+    useEffect(() => {
+        loadIncidents();
+        // const userName = AsyncStorage.getItem(userName);
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -37,11 +38,11 @@ export default function Incidents() {
 
 
             <FlatList
+                data={incident}
                 style={styles.incidentList}
-                data={[1, 2, 3, 4, 5, 6, 7]}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={incident => String(incident.id)}
-                renderItem={() => (
+                renderItem={({ item: incident }) => (
                     <View style={styles.incident} elevation={6}>
                         <Text style={styles.incidentProperty}>Bairro:</Text>
                         <Text style={styles.incidentValue}>Sapiranga</Text>
@@ -50,7 +51,7 @@ export default function Incidents() {
                         <Text style={styles.incidentValue}>1.7Km</Text>
 
                         <Text style={styles.incidentProperty}>Detalhes:</Text>
-                        <Text style={styles.incidentValue}>Gatinha grávida precisa de ajuda em transporte para castração, já temos lar temporário.</Text>
+                        <Text style={styles.incidentValue}>{incident.description}</Text>
 
                         <TouchableOpacity
                             style={styles.detailsButton}

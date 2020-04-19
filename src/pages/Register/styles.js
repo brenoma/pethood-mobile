@@ -15,13 +15,13 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginTop: 30,
         marginBottom: 24,
-        height: '30%',
+        height: '20%',
     },
 
     title: {
-        fontSize: 35,
-        color: '#0CC7BF',
-        fontWeight: 'bold',
+        fontSize: 40,
+        color: '#FFF',
+        // fontWeight: 'bold',
     },
 
     logon: {
@@ -39,7 +39,7 @@ export default StyleSheet.create({
     buttons: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 15,
+        marginTop: 5,
         alignSelf: 'center',
     },
 
@@ -64,7 +64,7 @@ export default StyleSheet.create({
 
     registerButton: {
         alignSelf: 'center',
-        paddingTop: 25,
+        paddingTop: 20,
     },
 
     registerButtonText: {
