@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import RNPickerSelect from 'react-native-picker-select';
 
 import logoImg from '../../assets/logo.png';
 
@@ -38,7 +39,13 @@ const validationSchema = yup.object().shape({
         .min(2)
         .max(2)
         .required('Estado é um campo obrigatório')
-        .label('UF')
+        .label('UF'),
+    phone: yup
+        .string()
+        .min(8, 'Telefone inválido')
+        .max(9, 'Telefone inválido')
+        .required('Telefone é um campo obrigatório')
+        .label('Telefone')
 })
 
 export default function Register() {
@@ -85,10 +92,10 @@ export default function Register() {
 
             <Formik
                 validationSchema={validationSchema}
-                initialValues={{ name: '', password: '', email: '', whatsapp: '123123123', phone: 85997494062, city: '', uf: '' }}
+                initialValues={{ name: '', password: '', email: '', phone: '', city: '', uf: '' }}
                 onSubmit={async (values) => {
                     try {
-                        await api.post('user', values)
+                        await api.post('users', values)
                     } catch (err) {
                         alert('Erro no cadastro, tente novamente');
                     }
@@ -124,7 +131,7 @@ export default function Register() {
                                     />
                                 }
                             />
-                            <Text style={{color: 'red', marginLeft: 10, fontSize: 12}}>{props.errors.name}</Text>
+                            <Text style={{ color: 'red', marginLeft: 10, fontSize: 12 }}>{props.errors.name}</Text>
                         </View>
 
                         <View style={{}}>
@@ -144,47 +151,63 @@ export default function Register() {
                                     />
                                 }
                             />
-                            <Text style={{color: 'red', marginLeft: 10, fontSize: 12}}>{props.errors.email}</Text>
+                            <Text style={{ color: 'red', marginLeft: 10, fontSize: 12 }}>{props.errors.email}</Text>
+                        </View>
+
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <View style={{ width: '70%' }}>
+                                <Input
+                                    value={props.values.city}
+                                    onChangeText={props.handleChange('city')}
+                                    placeholderTextColor={'#fff'}
+                                    keyboardType={"default"}
+                                    placeholder='Cidade'
+                                    autoCorrect={false}
+                                    leftIcon={
+                                        <Icon
+                                            style={{ paddingRight: 10 }}
+                                            name='home'
+                                            size={22}
+                                            color='#0CC7BF'
+                                        />
+                                    }
+                                />
+                                <Text style={{ color: 'red', marginLeft: 10, fontSize: 12 }}>{props.errors.city}</Text>
+                            </View>
+                            <View style={{ width: '30%', paddingBottom: 10}}>
+                                <RNPickerSelect
+                                    placeholderTextColor={'#fff'}
+                                    placeholder={{
+                                        label: 'UF',
+                                        value: null,
+                                    }}
+                                    onValueChange={(value) => console.log(value)}
+                                    items={[
+                                        { label: 'Ceará', value: 'CE' },
+                                        { label: 'São Paulo', value: 'SP' }
+                                    ]}
+                                />
+                            </View>
                         </View>
 
                         <View style={{}}>
                             <Input
-                                value={props.values.city}
-                                onChangeText={props.handleChange('city')}
+                                value={props.values.phone}
+                                onChangeText={props.handleChange('phone')}
                                 placeholderTextColor={'#fff'}
-                                keyboardType={"default"}
-                                placeholder='Cidade'
+                                keyboardType={'phone-pad'}
+                                placeholder='Telefone'
                                 autoCorrect={false}
                                 leftIcon={
                                     <Icon
                                         style={{ paddingRight: 10 }}
-                                        name='home'
+                                        name='phone'
                                         size={22}
                                         color='#0CC7BF'
                                     />
                                 }
                             />
-                            <Text style={{color: 'red', marginLeft: 10, fontSize: 12}}>{props.errors.city}</Text>
-                        </View>
-
-                        <View style={{}}>
-                            <Input
-                                value={props.values.uf}
-                                onChangeText={props.handleChange('uf')}
-                                placeholderTextColor={'#fff'}
-                                keyboardType={"default"}
-                                placeholder='Estado'
-                                autoCorrect={false}
-                                leftIcon={
-                                    <Icon
-                                        style={{ paddingRight: 10 }}
-                                        name='flag'
-                                        size={22}
-                                        color='#0CC7BF'
-                                    />
-                                }
-                            />
-                            <Text style={{color: 'red', marginLeft: 10, fontSize: 12}}>{props.errors.uf}</Text>
+                            <Text style={{ color: 'red', marginLeft: 10, fontSize: 12 }}>{props.errors.phone}</Text>
                         </View>
 
                         <View style={{ marginBottom: 20 }}>
@@ -204,7 +227,7 @@ export default function Register() {
                                     />
                                 }
                             />
-                            <Text style={{color: 'red', marginLeft: 10, fontSize: 12}}>{props.errors.password}</Text>
+                            <Text style={{ color: 'red', marginLeft: 10, fontSize: 12 }}>{props.errors.password}</Text>
                         </View>
 
                         <View >

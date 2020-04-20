@@ -9,7 +9,7 @@ import styles from './styles';
 import logoImg from '../../assets/logo.png'
 
 export default function Incidents() {
-    const [incident, setIncident] = useState([]);
+    const [incidents, setIncidents] = useState([]);
     const navigation = useNavigation();
 
     function navigateToDetail() {
@@ -17,9 +17,9 @@ export default function Incidents() {
     }
 
     async function loadIncidents() {
-        const response = await api.get('incident');
+        const response = await api.get('incidents');
 
-        setIncident(response.data);
+        setIncidents(response.data);
     }
 
     useEffect(() => {
@@ -38,11 +38,11 @@ export default function Incidents() {
 
 
             <FlatList
-                data={incident}
-                style={styles.incidentList}
+                data={incidents}
+                style={styles.incidentsList}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={incident => String(incident.id)}
-                renderItem={({ item: incident }) => (
+                keyExtractor={incidents => String(incidents.id)}
+                renderItem={({ item: incidents }) => (
                     <View style={styles.incident} elevation={6}>
                         <Text style={styles.incidentProperty}>Bairro:</Text>
                         <Text style={styles.incidentValue}>Sapiranga</Text>
@@ -51,7 +51,7 @@ export default function Incidents() {
                         <Text style={styles.incidentValue}>1.7Km</Text>
 
                         <Text style={styles.incidentProperty}>Detalhes:</Text>
-                        <Text style={styles.incidentValue}>{incident.description}</Text>
+                        <Text style={styles.incidentValue}>{incidents.description}</Text>
 
                         <TouchableOpacity
                             style={styles.detailsButton}
