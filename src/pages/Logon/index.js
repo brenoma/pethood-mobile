@@ -68,12 +68,13 @@ export default function Logon() {
                 initialValues={{ email: '', password: '' }}
                 onSubmit={async (values) => {
                     try {
-                        const response = await api.post('sessions', values);
+                        navigateToHome();
+                        // const response = await api.post('sessions', values);
                         // const response = await api.get('/');
                         // setUser(response.data._id);
                         // AsyncStorage.setItem('userName', userName);
 
-                        alert(`${response.data.name}`);
+                        // alert(`${response.data.name}`);
                         // navigateToHome();
                     } catch (err) {
                         alert('Usuário ou senha inválidos!');

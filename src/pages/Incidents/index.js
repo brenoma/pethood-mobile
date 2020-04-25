@@ -13,7 +13,7 @@ export default function Incidents() {
     const navigation = useNavigation();
 
     function navigateToDetail() {
-        navigation.navigate('Home', { screen: 'Detail' });
+        navigation.jumpTo('Casos');
     }
 
     async function loadIncidents() {

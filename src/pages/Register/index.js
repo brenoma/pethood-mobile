@@ -174,8 +174,10 @@ export default function Register() {
                                 />
                                 <Text style={{ color: 'red', marginLeft: 10, fontSize: 12 }}>{props.errors.city}</Text>
                             </View>
-                            <View style={{ width: '30%', paddingBottom: 10}}>
+                            <View
+                                style={styles.ufButtonContainer} elevation={2}>
                                 <RNPickerSelect
+                                    style={{marginLeft: 100}}
                                     placeholderTextColor={'#fff'}
                                     placeholder={{
                                         label: 'UF',
@@ -190,7 +192,7 @@ export default function Register() {
                             </View>
                         </View>
 
-                        <View style={{}}>
+                        <View>
                             <Input
                                 value={props.values.phone}
                                 onChangeText={props.handleChange('phone')}

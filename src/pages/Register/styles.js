@@ -81,5 +81,13 @@ export default StyleSheet.create({
     errorTxt: {
         color: 'red',
         paddingLeft: 10,
+    },
+
+    ufButtonContainer: {
+        width: '30%',
+        height: '80%',
+        paddingBottom: 10,
+        backgroundColor: '#0bb297',
+        borderRadius:80
     }
 });
