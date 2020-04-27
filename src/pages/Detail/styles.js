@@ -32,5 +32,26 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
         marginHorizontal: 20,
         borderRadius: 8,
-    }
+        padding: 20,
+    },
+
+    incident: {
+        borderRadius: 8,
+        backgroundColor: '#FFF',
+        padding: 20,
+        marginBottom: 16,
+    },
+
+    incidentProperty: {
+        color: '#0CC7BF',
+        fontWeight: 'bold',
+        fontSize: 14,
+    },
+
+    incidentValue: {
+        marginTop: 8,
+        fontSize: 15,
+        marginBottom: 24,
+        color: '#737380'
+    },
 })

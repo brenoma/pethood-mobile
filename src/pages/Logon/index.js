@@ -68,9 +68,11 @@ export default function Logon() {
                 initialValues={{ email: '', password: '' }}
                 onSubmit={async (values) => {
                     try {
+                        const response = await api.post('sessions', values);
+                        // alert(`${response.name}`)
+
                         navigateToHome();
-                        // const response = await api.post('sessions', values);
-                        // const response = await api.get('/');
+                        // const response = await api.get('');
                         // setUser(response.data._id);
                         // AsyncStorage.setItem('userName', userName);
 

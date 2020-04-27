@@ -12,8 +12,8 @@ export default function Incidents() {
     const [incidents, setIncidents] = useState([]);
     const navigation = useNavigation();
 
-    function navigateToDetail() {
-        navigation.jumpTo('Casos');
+    function navigateToDetail(incidents) {
+        navigation.navigate('Casos', { incidents });
     }
 
     async function loadIncidents() {
@@ -41,7 +41,7 @@ export default function Incidents() {
                 data={incidents}
                 style={styles.incidentsList}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={incidents => String(incidents.id)}
+                keyExtractor={incidents => String(incidents._id)}
                 renderItem={({ item: incidents }) => (
                     <View style={styles.incident} elevation={6}>
                         <Text style={styles.incidentProperty}>Bairro:</Text>
@@ -55,7 +55,7 @@ export default function Incidents() {
 
                         <TouchableOpacity
                             style={styles.detailsButton}
-                            onPress={navigateToDetail}
+                            onPress={() => navigateToDetail(incidents)}
                         >
                             <Text style={styles.detailsButtonText}>Ajudar no caso!</Text>
                             <Feather name='arrow-right' size={20} color={'#0CC7BF'}></Feather>
